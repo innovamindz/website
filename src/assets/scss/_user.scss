@@ -1,57 +1,250 @@
 // Should you need to overwrite any of our SCSS code or need to add any custom code, We highly recommend that you add your code into this file, so whenever theme update is available and you update the theme, You will not lose your hard work :)
 
-// Note for dark mode:
-// Uncomment below code and change primary color code to set different primary(i.e. light color of your primary) color in dark mode only.
+// Innovaminds Dark Mode Customization
+// MAJOR CHANGE: Using Innovaminds navy background (#002532) instead of default dark gray (#161618)
+// This creates better brand cohesion with the logo colors
 
 /*User CSS*/
 
-// [data-bs-theme="dark"] {
-//   --bs-primary: #2ac5f5 !important;
-//   --bs-primary-rgb: 42, 197, 245 !important; 
-//   --bs-link-hover-color:#067799 !important;
-//   --bs-link-color:#2ac5f5;
-//   --bs-link-color-rgb: 42, 197, 245 !important;
-//   --bs-link-hover-color-rgb: 6, 119, 153 !important;
+[data-bs-theme="dark"] {
+  // MAJOR CHANGE: Override background colors to use Innovaminds navy for brand cohesion
+  --bs-body-bg: #002532 !important; // Innovaminds navy (C2) - main background
+  --bs-body-bg-rgb: 0, 37, 50 !important;
+  --bs-mode: #003545 !important; // Card/modal background (slightly lighter navy)
+  --bs-gray-100: #004055 !important; // Alternative section background
+  
+  // Primary brand colors - Innovaminds blue system
+  --bs-primary: #5ab2e9 !important; // C1: Light blue (6.85:1 contrast on navy)
+  --bs-primary-rgb: 90, 178, 233 !important; 
+  --bs-link-hover-color: #4299d1 !important; // Calculated hover state (15-20% darker)
+  --bs-link-color: #5ab2e9;
+  --bs-link-color-rgb: 90, 178, 233 !important;
+  --bs-link-hover-color-rgb: 66, 153, 209 !important;
+  
+  // Success color using Innovaminds cyan
+  --bs-success: #00dcd1 !important; // C3: Bright cyan (9.28:1 contrast)
+  --bs-success-rgb: 0, 220, 209 !important;
 
+  // Button primary - Main call-to-action styling
+  .btn-primary {
+    --bs-btn-bg: var(--#{$prefix}primary);
+    --bs-btn-border-color: var(--#{$prefix}primary);
+    --bs-btn-hover-bg: var(--#{$prefix}link-hover-color);
+    --bs-btn-hover-border-color: var(--#{$prefix}link-hover-color);
+    --bs-btn-active-bg: var(--#{$prefix}link-hover-color);
+    --bs-btn-active-border-color: var(--#{$prefix}link-hover-color);
+    --bs-btn-disabled-bg: var(--#{$prefix}primary);
+  }
+  
+  // Button link - Text-style buttons
+  .btn-link {
+    --bs-link-color: var(--#{$prefix}primary);
+    --bs-btn-hover-color: var(--#{$prefix}link-hover-color);
+    --bs-btn-active-color: var(--#{$prefix}link-hover-color);
+  }
+  
+  // Button outline primary - Secondary actions
+  .btn-outline-primary {
+    --bs-btn-color: var(--#{$prefix}primary);
+    --bs-btn-border-color: var(--#{$prefix}primary);
+    --bs-btn-hover-bg: var(--#{$prefix}primary);
+    --bs-btn-hover-border-color: var(--#{$prefix}primary);
+    --bs-btn-active-bg: var(--#{$prefix}primary);
+    --bs-btn-active-border-color: var(--#{$prefix}primary);
+    --bs-btn-disabled-color: var(--#{$prefix}primary);
+    --bs-btn-disabled-border-color: var(--#{$prefix}primary);
+  }
 
-//   // Button primary
-//   .btn-primary {
-//     --bs-btn-bg: var(--#{$prefix}primary);
-//     --bs-btn-border-color: var(--#{$prefix}primary);
-//     --bs-btn-hover-bg: var(--#{$prefix}link-hover-color);
-//     --bs-btn-hover-border-color: var(--#{$prefix}link-hover-color);
-//     --bs-btn-active-bg: var(--#{$prefix}link-hover-color);
-//     --bs-btn-active-border-color: var(--#{$prefix}link-hover-color);
-//     --bs-btn-disabled-bg: var(--#{$prefix}primary);
-//   }
-//   .btn-link {
-//     --bs-link-color: var(--#{$prefix}primary);
-//     --bs-btn-hover-color: var(--#{$prefix}link-hover-color);
-//     --bs-btn-active-color: var(--#{$prefix}link-hover-color);
-//   }
-//   .btn-outline-primary {
-//     --bs-btn-color: var(--#{$prefix}primary);
-//     --bs-btn-border-color: var(--#{$prefix}primary);
-//     --bs-btn-hover-bg: var(--#{$prefix}primary);
-//     --bs-btn-hover-border-color: var(--#{$prefix}primary);
-//     --bs-btn-active-bg: var(--#{$prefix}primary);
-//     --bs-btn-active-border-color: var(--#{$prefix}primary);
-//     --bs-btn-disabled-color: var(--#{$prefix}primary);
-//     --bs-btn-disabled-border-color: var(--#{$prefix}primary);
-//   }
+  // Button primary soft - Subtle background with primary text
+  .btn-primary-soft {
+    color: var(--#{$prefix}primary);
+    background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+    border-color: transparent;
+    
+    &:hover, &:focus {
+      color: $white;
+      background-color: var(--#{$prefix}primary);
+      border-color: var(--#{$prefix}primary);
+    }
+    
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(var(--#{$prefix}primary-rgb), 0.25);
+    }
+    
+    &:active {
+      color: $white;
+      background-color: var(--#{$prefix}link-hover-color);
+      border-color: var(--#{$prefix}link-hover-color);
+    }
+  }
 
-//   .btn-primary-soft{
-//     color: var(--#{$prefix}primary);
-//     background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
-//     &:hover, &:focus{
-//       color: $white;
-//       background-color: var(--#{$prefix}primary);
-//       border-color: var(--#{$prefix}primary);
-//     }
-//   }
+  // Success button variants using cyan
+  .btn-success {
+    --bs-btn-bg: var(--#{$prefix}success);
+    --bs-btn-border-color: var(--#{$prefix}success);
+    --bs-btn-hover-bg: #00b8ae; // Darker cyan for hover
+    --bs-btn-hover-border-color: #00b8ae;
+    --bs-btn-active-bg: #00b8ae;
+    --bs-btn-active-border-color: #00b8ae;
+  }
+  
+  .btn-outline-success {
+    --bs-btn-color: var(--#{$prefix}success);
+    --bs-btn-border-color: var(--#{$prefix}success);
+    --bs-btn-hover-bg: var(--#{$prefix}success);
+    --bs-btn-hover-border-color: var(--#{$prefix}success);
+    --bs-btn-active-bg: var(--#{$prefix}success);
+    --bs-btn-active-border-color: var(--#{$prefix}success);
+  }
 
-//   // Fill color
-//   .fill-primary{
-//     fill: var(--#{$prefix}primary) !important;
-//   }
-// }
+  // Form controls - Focus states for navy background
+  .form-control:focus,
+  .form-select:focus {
+    border-color: rgba(var(--#{$prefix}primary-rgb), 0.7);
+    box-shadow: 0 0 0 0.25rem rgba(var(--#{$prefix}primary-rgb), 0.25);
+  }
+  
+  // Checkbox and radio controls
+  .form-check-input:checked {
+    background-color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}primary);
+  }
+  
+  .form-check-input:focus {
+    border-color: rgba(var(--#{$prefix}primary-rgb), 0.7);
+    box-shadow: 0 0 0 0.25rem rgba(var(--#{$prefix}primary-rgb), 0.25);
+  }
+
+  // Navigation active/hover states
+  .navbar-nav .nav-link:hover,
+  .navbar-nav .nav-link:focus {
+    color: var(--#{$prefix}primary) !important;
+  }
+  
+  .navbar-nav .nav-link.active {
+    color: var(--#{$prefix}primary) !important;
+  }
+
+  // Card backgrounds on navy
+  .card {
+    background-color: var(--#{$prefix}mode);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  // Modal backgrounds
+  .modal-content {
+    background-color: var(--#{$prefix}mode);
+  }
+  
+  // Dropdown backgrounds
+  .dropdown-menu {
+    background-color: var(--#{$prefix}mode);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+    color: var(--#{$prefix}primary);
+  }
+
+  // Progress bars
+  .progress-bar {
+    background-color: var(--#{$prefix}primary);
+  }
+  
+  // Pagination
+  .page-link:hover {
+    background-color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}primary);
+    color: $white;
+  }
+  
+  .page-item.active .page-link {
+    background-color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}primary);
+  }
+
+  // List group
+  .list-group-item.active {
+    background-color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}primary);
+  }
+  
+  .list-group-item:hover {
+    background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+  }
+
+  // Alerts with primary color
+  .alert-primary {
+    background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+    border-color: rgba(var(--#{$prefix}primary-rgb), 0.2);
+    color: var(--#{$prefix}primary);
+  }
+
+  // SVG fill utilities for icons
+  .fill-primary {
+    fill: var(--#{$prefix}primary) !important;
+  }
+  
+  .fill-success {
+    fill: var(--#{$prefix}success) !important;
+  }
+  
+  .fill-hover-primary:hover {
+    fill: var(--#{$prefix}link-hover-color) !important;
+  }
+
+  // Text color utilities
+  .text-primary {
+    color: var(--#{$prefix}primary) !important;
+  }
+  
+  .text-primary-hover:hover {
+    color: var(--#{$prefix}link-hover-color) !important;
+  }
+
+  // Border utilities
+  .border-primary {
+    border-color: var(--#{$prefix}primary) !important;
+  }
+
+  // Background utilities for depth system
+  .bg-mode {
+    background-color: var(--#{$prefix}mode) !important;
+  }
+  
+  .bg-body-secondary {
+    background-color: var(--#{$prefix}gray-100) !important;
+  }
+
+  // Accordion styling on navy background
+  .accordion-button:not(.collapsed) {
+    background-color: rgba(var(--#{$prefix}primary-rgb), 0.1);
+    color: var(--#{$prefix}primary);
+  }
+  
+  .accordion-button:focus {
+    border-color: rgba(var(--#{$prefix}primary-rgb), 0.7);
+    box-shadow: 0 0 0 0.25rem rgba(var(--#{$prefix}primary-rgb), 0.25);
+  }
+
+  // Offcanvas background
+  .offcanvas {
+    background-color: var(--#{$prefix}mode);
+  }
+
+  // Toast backgrounds
+  .toast {
+    background-color: var(--#{$prefix}mode);
+  }
+  
+  // Breadcrumb
+  .breadcrumb-item.active {
+    color: var(--#{$prefix}primary);
+  }
+  
+  .breadcrumb-item > a:hover {
+    color: var(--#{$prefix}link-hover-color);
+  }
+}
