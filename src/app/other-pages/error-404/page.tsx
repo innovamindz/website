@@ -103,7 +103,7 @@ const error404 = () => {
 
                 <p className="mb-4">The page you were looking for doesn&apos;t exist</p>
 
-                <Link href="/demos/classic-default" className="btn btn-dark mb-0">
+                <Link href="/demos/agency/digital" className="btn btn-dark mb-0">
                   Back to Homepage
                 </Link>
               </Col>
