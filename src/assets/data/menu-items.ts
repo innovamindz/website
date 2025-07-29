@@ -101,7 +101,7 @@ export const APP_MENU_ITEMS: MenuItemType[] = [
       {
         key: 'classic-default',
         label: 'Classic Default',
-        url: '/demos/classic-default',
+        url: '/demos/agency/digital',
         parentKey: 'demos',
       },
       {
